@@ -6,7 +6,7 @@ export const GetMovieData = (movieId) => async dispatch => {
             type: 'MOVIE_DATA_LOADING',
         })
 
-        const res = await axios.get(`http://www.omdbapi.com/?i=${movieId}&apikey=4a32bfca`);
+        const res = await axios.get(`https://www.omdbapi.com/?i=${movieId}&apikey=4a32bfca`);
         dispatch({
             type: 'MOVIE_DATA_SUCCESS',
             payload: res.data,
