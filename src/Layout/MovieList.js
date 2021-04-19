@@ -4,7 +4,7 @@ import { GetMovieList } from '../Actions/MovieListAction';
 import { NavLink } from 'react-router-dom';
 import { v4 } from 'uuid'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Container, Row, Col, Form, Button, Input, CardImg, CardBody, CardTitle } from 'reactstrap';
+import { Container, Col, Form, Button, Input, CardImg, CardBody, CardTitle } from 'reactstrap';
 
 const MovieList = () => {
 
@@ -34,7 +34,7 @@ const MovieList = () => {
                     <Input type="text" placeholder="Search Movie" value={searchValue} onChange={(e) => { setSearchValue(e.target.value) }} />
                     <Button className="btn-success">Search</Button>
                 </Form>
-                <Row>
+                <>
                     {
                         <InfiniteScroll
                             dataLength={Number(movieList.data.length)} //This is important field to render the next data
@@ -52,7 +52,7 @@ const MovieList = () => {
                             {
                                 movieList.data.map(movie => {
                                     let movieUrlName = movie.Title.replace(/\s+/g, '-').toLowerCase();
-                                    return <Col className="col-md-3 mt-3 mb-3" key={v4()}>
+                                    return <Col className="col-md-4 col-lg-3 mt-3 mb-3 col-sm-6 col-12" key={v4()}>
                                         <NavLink to={`/movie/${movie.imdbID}/${movieUrlName}`} className="card">
                                             <CardImg style={{ width: '100%', height: '300px', objectFit: 'contain' }} src={`${movie.Poster}`} alt={movie.Title} />
                                             <CardBody>
@@ -67,7 +67,7 @@ const MovieList = () => {
                     }
 
 
-                </Row>
+                </>
             </Container>
         </React.Fragment >
     );
