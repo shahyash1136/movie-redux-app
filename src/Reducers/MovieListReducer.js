@@ -1,6 +1,7 @@
 const initialState = {
     loading: false,
     data: [],
+    totolCount: 0,
     error: '',
 }
 
@@ -22,8 +23,10 @@ const MovieListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                data: action.payload.Search,
-                error: ''
+                data: action.pageNum > 1 ? [...state.data, ...action.payload.Search] : [...action.payload.Search],
+                totolCount: action.payload.totalResults,
+                error: '',
+
             }
 
         default:

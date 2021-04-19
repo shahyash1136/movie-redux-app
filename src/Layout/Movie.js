@@ -15,7 +15,7 @@ const Movie = (props) => {
 
     const data = movieState.data;
 
-
+    console.log(props)
 
     return (
         <Container className="mt-4 mb-4">
